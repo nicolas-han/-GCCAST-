@@ -1,0 +1,46 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#define MAX_LINE 1024 //定义每行最大字节数 
+int main(void)
+{
+    FILE *fp;//声明fp是指针，用来指向FILE类型的对象 
+    char strLine[MAX_LINE];
+    char sentence[MAX_LINE];//读取缓冲区 
+    FILE *pFile;
+    if((fp = fopen("test10.c.txt","r"))==NULL)//判断文件是否存在与可读 
+	{
+		printf("open failed");
+		return -1;
+	}
+	while(!feof(fp))
+	{
+		fgets(strLine,MAX_LINE,fp);
+		for(int i=0;i<200;i++) 
+		{	
+			printf("%c",strLine[i]);
+			sentence[i]=strLine[i];
+		}
+		memset(strLine, 0, sizeof(strLine));
+		
+		printf("completed one line!\n");
+		if(sentence[strlen(sentence)-1]=='\n')
+			sentence[strlen(sentence)-1]=' ';
+	
+		pFile = fopen("test.c.txt","a");
+		
+		if(sentence[0]=='@')
+		{
+			fputc('\n',pFile);
+			fputs(sentence,pFile);
+		}
+		else
+		{
+			fputs(sentence,pFile);
+		}
+		memset(sentence, 0, sizeof(sentence));	
+	}
+	fclose(fp);
+	fclose(pFile);
+	return 0;
+}
