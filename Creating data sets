@@ -1,7 +1,7 @@
-input=open(r'C:\Users\Administrator\Desktop\AST数据处理\初步处理AST\test9.c.txt','r')  #打开文件
+input=open(r'C:\Users\Administrator\Desktop\AST数据处理\初步处理AST\test2.c.txt','r')  #打开文件
 lines=input.readlines()   #读取文件
 input.close()      #关闭文件
-output=open(r'C:\Users\Administrator\Desktop\AST数据处理\决策树数据集\test9.c.txt','w')   #打开文件，其实这里，是创建文件。因为usb3.txt是不存在的
+output=open(r'C:\Users\Administrator\Desktop\AST数据处理\决策树数据集\test3.c.txt','w')   #打开文件，其实这里，是创建文件。因为test3.c.txt是不存在的
 
 for line in lines:  #for循环
     if not line:     #如果不存在该行，就跳出循环
